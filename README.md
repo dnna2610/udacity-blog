@@ -17,4 +17,4 @@ The blog is currently running at: http://blog-145310.appspot.com/
 # Instructions
 TO run the project, add this application in Google App Engine and run it. The application would then be running
 on local host. To deploy this app on appspot, delete the application and version properties in the file
-app.yaml and run command: 'gcloud app deploy'
+app.yaml and run command: `gcloud app deploy`
