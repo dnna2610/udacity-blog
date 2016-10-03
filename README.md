@@ -13,3 +13,7 @@ This is a simple blog application that allows users to write, edit, delete their
 
 # Link
 The blog is currently running at: http://blog-145310.appspot.com/
+
+# Instructions
+TO run the project, add this application in Google App Engine and run it. The application would then be running
+on local host.
