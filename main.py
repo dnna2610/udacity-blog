@@ -120,7 +120,7 @@ class PostPage(Handler):
             self.response.write("No post was found.")
             return
         else:
-            q = "select * from Comment where post_key='%s' order by created desc limit 10" % key_id
+            q = "select * from Comment where post_key='%s' order by created asc limit 10" % key_id
             comments = db.GqlQuery(q)
             username = self.check_login()
             liked = False
