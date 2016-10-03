@@ -335,7 +335,7 @@ class CommentPage(Handler):
                 self.redirect("/post?key_id="+key_id)
 
 app = webapp2.WSGIApplication([
-    ('/', MainHandler),
+    ('/', WelcomePage),
     ('/newpost', NewPost),
     ('/post', PostPage),
     ('/front', FrontPage),
