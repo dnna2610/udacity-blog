@@ -44,7 +44,7 @@
             </div>
             <input type="hidden" name="key_id" value="{{ post.key().id() }}">
             <button type="submit" class="btn btn-raised btn-primary col-xs-offset-2">Save</button>
-            <a class="btn btn-danger" href="/front">Cancel</a>
+            <a class="btn btn-danger" href="/post?key_id={{ post.key().id() }}">Cancel</a>
         </form>
     </div>
 </body>
