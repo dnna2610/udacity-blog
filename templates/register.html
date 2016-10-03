@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Blog - Register</title>
+    <!-- Material Design fonts -->
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/icon?family=Material+Icons">
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/4.0.2/bootstrap-material-design.css">
+</head>
+
+<body>
+    <br>
+    <h2 class="text-center text-capitalize">Sign Up</h2>
+    <div class="text-center">
+        Already have an account? <a href="/login">Log in here</a>
+    </div>
+    <div class="clearfix"></div>
+    <div class="col-md-6 col-md-offset-3">
+        <form class="form-horizontal" method="POST">
+            <fieldset>
+                <div class="form-group">
+                    <label for="username" class="col-md-2 control-label">Username</label>
+
+                    <div class="col-md-10">
+                        <input type="text" class="form-control" value="{{ username }}" id="username" placeholder="Username" name="username" required>
+                        {% if error_username %}
+                            <span class="help-block text-danger">This username already exists.</span>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="password" class="col-md-2 control-label">Password</label>
+
+                    <div class="col-md-10">
+                        <input type="password" class="form-control" id="password" placeholder="Password" name="password" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="confirm" class="col-md-2 control-label">Confirm Password</label>
+
+                    <div class="col-md-10">
+                        <input type="password" class="form-control" id="confirm" placeholder="Confirm Password" name="confirm" required>
+                        {% if error_confirm %}
+                            <span class="help-block text-danger">Password does not match.</span>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email" class="col-md-2 control-label">Email (optional)</label>
+
+                    <div class="col-md-10">
+                        <input type="email" class="form-control" value="{{ email | safe }}" id="email" name="email" placeholder="Email">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-10 col-md-offset-2">
+                        <button type="submit" class="btn btn-raised btn-primary">Submit</button>
+                        <br>
+                        
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</body>
+
+</html>

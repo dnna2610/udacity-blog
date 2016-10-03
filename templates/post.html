@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Blog - {{ post.subject }}</title>
+    <!-- Material Design fonts -->
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/icon?family=Material+Icons">
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/4.0.2/bootstrap-material-design.css">
+</head>
+
+<body>
+    <div class="col-md-8 col-md-offset-2">
+        <br>
+        <h2 class="text-center text-capitalize">{{post.subject}}</h2>
+        <h6 class="text-center text-capitalize"> Written by {{ post.author }} - {{post.created.strftime("%b %d, %Y")}} </h6>
+        <br>
+        <p>{{post.content_html | safe}}</p>
+        <form method="POST" action="/delete">
+            <input type="hidden" name="key_id" value="{{ post.key().id() }}">
+            <button class="btn btn-warning pull-right" type="submit"><i class="material-icons">delete</i></button>
+        </form>
+        <a class="btn btn-info pull-right" href="/edit?key_id={{ post.key().id() }}"><i class="material-icons">mode_edit</i></a>
+        {% if liked %}
+            <a class="btn btn-primary pull-right" href="/like?key_id={{ post.key().id() }}"><i class="material-icons">thumb_up</i></a>
+        {% else %}
+            <a class="btn pull-right" href="/like?key_id={{ post.key().id() }}"><i class="material-icons">thumb_up</i></a>            
+        {% endif %}
+        <div class="clearfix"></div>
+        <hr>
+        {% for comment in comments %}
+            <blockquote>
+                <p>{{ comment.content }}</p>
+                <small>{{ comment.username }} at <cite title="Source Title"> {{ comment.created.strftime("%b %d, %Y") }}</cite></small>
+            </blockquote>
+        {% endfor %}
+        <div class="clearfix"></div>
+        <hr>
+        <form method="POST" action="/comment">
+            <input type="hidden" name="key_id" value="{{ post.key().id() }}">
+            <div class="form-group">
+                <label for="comment" class="col-md-1 control-label">Comment</label>
+                <div class="col-md-10">
+                    <textarea class="form-control" rows="3" id="comment" name="comment_content" required></textarea>
+                </div>
+            </div>
+            <button class="btn btn-raised btn-info" type="submit">Submit</button>
+        </form>
+        <br>
+    </div>
+</body>
+
+</html>
