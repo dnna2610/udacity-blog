@@ -10,3 +10,6 @@ This is a simple blog application that allows users to write, edit, delete their
 - '/login' - Login page
 - '/edit' - Page to edit individual post (needs a post key and the user have to be the orginal author)
 - '/edit_comment' - Page to edit the comment (also need to be logged in and the user that post the comment)
+
+# Link
+The blog is currently running at: http://blog-145310.appspot.com/
