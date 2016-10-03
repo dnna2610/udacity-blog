@@ -129,7 +129,7 @@ class PostPage(Handler):
                 l = db.GqlQuery(query).get()
                 if l:
                     liked = True
-            self.render("post.html", post = post, liked = liked, comments = comments)
+            self.render("post.html", post = post, liked = liked, comments = comments, username=username)
 
 class EditPage(Handler):
     def get(self):
@@ -333,6 +333,42 @@ class CommentPage(Handler):
                 comm = Comment(post_key=key_id, username=username, content=content)
                 comm.put()
                 self.redirect("/post?key_id="+key_id)
+        else:
+            self.redirect("/login")
+
+class EditCommentPage(Handler):
+    def get(self):
+        username = self.check_login()
+        if username:
+            key_id = self.request.get("key_id")
+            key = db.Key.from_path("Comment", int(key_id))
+            comment = db.get(key)
+
+            if not comment:
+                self.redirect("/front")
+            elif comment.username == username:
+                self.render("edit_comment.html", comment=comment)
+        else:
+            self.redirect("/login")
+
+    def post(self):
+        username = self.check_login()
+        if username:
+            key_id = self.request.get("key_id")
+            key = db.Key.from_path("Comment", int(key_id))
+            comment = db.get(key)
+
+            if not comment:
+                self.redirect("/front")
+            elif comment.username == username:
+                content = self.request.get('content')
+                if content:
+                    comment.content = content
+                    comment.put()
+                    self.redirect("/post?key_id=%s" % comment.post_key)
+                else:
+                    error_content = True
+                    self.render("edit_comment.html", error_content=error_content)
 
 app = webapp2.WSGIApplication([
     ('/', WelcomePage),
@@ -346,5 +382,6 @@ app = webapp2.WSGIApplication([
     ('/edit', EditPage),
     ('/delete', Delete),
     ('/like', LikePage),
-    ('/comment', CommentPage)
+    ('/comment', CommentPage),
+    ('/edit_comment', EditCommentPage)
 ], debug=True)

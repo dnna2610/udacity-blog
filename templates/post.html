@@ -32,10 +32,13 @@
         <div class="clearfix"></div>
         <hr>
         {% for comment in comments %}
-            <blockquote>
+            <blockquote class="col-md-11">
                 <p>{{ comment.content }}</p>
                 <small>{{ comment.username }} at <cite title="Source Title"> {{ comment.created.strftime("%b %d, %Y") }}</cite></small>
             </blockquote>
+            {% if comment.username|string() == username|string() %}
+            <a class="btn pull-right" href="/edit_comment?key_id={{ comment.key().id() }}"><i class="material-icons">mode_edit</i></a>
+            {% endif %}            
         {% endfor %}
         <div class="clearfix"></div>
         <hr>
@@ -47,7 +50,11 @@
                     <textarea class="form-control" rows="3" id="comment" name="comment_content" required></textarea>
                 </div>
             </div>
-            <button class="btn btn-raised btn-info" type="submit">Submit</button>
+            {% if username %}
+                <button class="btn btn-raised btn-info" type="submit">Submit</button>
+            {% else %}
+                <button class="btn btn-raised btn-info" disabled type="submit">Submit</button>
+            {% endif %}
         </form>
         <br>
     </div>
