@@ -1,24 +1,12 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-    <title>Blog - Log In</title>
-    <!-- Material Design fonts -->
-    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700">
-    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/icon?family=Material+Icons">
-
-    <!-- Bootstrap -->
-    <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/4.0.2/bootstrap-material-design.css">
-</head>
-
-<body>
+{% extends "base.html" %} 
+{% block content %}
     <br>
     <h2 class="text-center text-capitalize">Sign In</h2>
     <div class="text-center">
         Don't have an account? <a href="/register">Sign up here</a>
     </div>
-    <div class="col-md-6 col-md-offset-3">
+    <br>
+    <div class="col-md-8 col-md-offset-2">
         <form class="form-horizontal" method="POST">
             <fieldset>
                 <div class="form-group">
@@ -46,6 +34,4 @@
             </fieldset>
         </form>
     </div>
-</body>
-
-</html>
+{% endblock %}
