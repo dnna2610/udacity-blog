@@ -13,11 +13,19 @@
 </head>
 
 <body>
-    <h1>Welcome, {{ username }}</h1>
-    <br>
-    <form method="post" action="/logout">
-        <button type="submit" class="btn btn-raised btn-primary">Log Out</button>
-    </form>
+    <div class="col-md-8 col-md-offset-2">
+        <br>
+        <h1>Welcome to this blog, {{ username }}</h1>
+        <br>
+        <p>I humbly introduce to you all that we offer:</p>
+        <ul>
+            <li><a href="/front">Recent blog posts</a> (you can view individual posts from here)</li> 
+            <li><a href="/newpost">Or want to write one yourself?</a></li>
+        </ul>
+        <form method="post" action="/logout">
+            <button type="submit" class="btn btn-raised btn-primary">Log Out</button>
+        </form>
+    </div>
 </body>
 
 </html>
