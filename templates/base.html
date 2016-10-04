@@ -13,9 +13,16 @@
 </head>
 
 <body>
+    <br>
+    <h1 class="text-center">Udacity Blog</h1>
+    <div class="text-center">
+        <a href="/welcome"> Home </a> | 
+        <a href="/front"> Front </a> |
+        <a href="/newpost">Write New Post</a>
+    </div>
+    <div class="clearfix"></div>
     <div class="col-md-8 col-xs-offset-2">
-        {% block content %}
-        {% endblock %}
+        {% block content %} {% endblock %}
     </div>
 </body>
 
